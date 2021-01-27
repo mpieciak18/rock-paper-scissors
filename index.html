@@ -26,16 +26,29 @@
                 return null;
             }
         };
+        function evalGame(playerScore, computerScore) {
+            if (playerScore > computerScore) {
+                return "Congratulations! You won the game.";
+            } else if (computerScore > playerScore) {
+                return "Sorry, you lost the game.";
+            } else {
+                return "You tied with your opponent!";
+            };
+        }
+        let playerOutcome;
         function playRound(playerSelection, computerSelection) {
             if (playerSelection == "Rock" && computerSelection == "Paper"
                 || playerSelection == "Paper" && computerSelection == "Scissors"
                 || playerSelection == "Scissors" && computerSelection == "Rock") {
+                    playerOutcome = "lose";
                     return evalRound(playerSelection, computerSelection, "lose");
             } else if (playerSelection == "Paper" && computerSelection == "Rock"
                 || playerSelection == "Scissors" && computerSelection == "Paper"
                 || playerSelection == "Rock" && computerSelection == "Scissors") {
+                    playerOutcome = "win";
                     return evalRound(playerSelection, computerSelection, "win");
             } else {
+                playerOutcome = "tie";
                 return evalRound(playerSelection, computerSelection, "tie");
             }
         };
@@ -51,15 +64,23 @@
             }
         };
         function game() {
+            let playerScore = 0;
+            let computerScore = 0;
             alert("Let's play 5 rounds of rock, paper, scissors!");
             let i;
             for (i = 1; i < 6; i++) {
                 let playerChoice = playerPlay();
                 let computerChoice = computerPlay();
                 let result = "Round " + i + " outcome: \n" + playRound(playerChoice, computerChoice);
+                if (playerOutcome == "win") {
+                    playerScore += 1;
+                } else {
+                    computerScore += 1;
+                };
                 alert(result);
             };
-        }
+            alert(evalGame(playerScore, computerScore));
+        };
         game();
     </script>
 </html>
