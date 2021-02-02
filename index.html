@@ -3,84 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock, Paper, Scissors</title>
+        <link rel='stylesheet' href='/styles.css'>
     </head>
-    <script>
-        function computerPlay() {
-            let choice = Math.random();
-            if (choice <= 0.333) {
-                return "Rock";
-            } else if (choice > 0.333 && choice <= 0.666) {
-                return "Paper";
-            } else {
-                return "Scissors";
-            }
-        };
-        function evalRound(playerSelection, computerSelection, playerOutcome) {
-            if (playerOutcome === "win") {
-                return "You win! " + playerSelection + " beats " + computerSelection + "!";
-            } else if (playerOutcome === "lose") {
-                return "You lose! " + computerSelection + " beats " + playerSelection + "!";
-            } else if (playerOutcome === "tie") {
-                return "You tied! Both of you played " + playerSelection + "!";
-            } else {
-                return null;
-            }
-        };
-        function evalGame(playerScore, computerScore) {
-            if (playerScore > computerScore) {
-                return "Congratulations! You won the game.";
-            } else if (computerScore > playerScore) {
-                return "Sorry, you lost the game.";
-            } else {
-                return "You tied with your opponent!";
-            };
-        }
-        let playerOutcome;
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection == "Rock" && computerSelection == "Paper"
-                || playerSelection == "Paper" && computerSelection == "Scissors"
-                || playerSelection == "Scissors" && computerSelection == "Rock") {
-                    playerOutcome = "lose";
-                    return evalRound(playerSelection, computerSelection, "lose");
-            } else if (playerSelection == "Paper" && computerSelection == "Rock"
-                || playerSelection == "Scissors" && computerSelection == "Paper"
-                || playerSelection == "Rock" && computerSelection == "Scissors") {
-                    playerOutcome = "win";
-                    return evalRound(playerSelection, computerSelection, "win");
-            } else {
-                playerOutcome = "tie";
-                return evalRound(playerSelection, computerSelection, "tie");
-            }
-        };
-        function playerPlay() {
-            let choice = prompt("What do you want to play: Rock, Paper, or Scissors?");
-            lowCaseChoice = choice.toLowerCase();
-            capChoice = lowCaseChoice.charAt(0).toUpperCase() + lowCaseChoice.slice(1);
-            if (capChoice != "Rock" && capChoice != "Paper" && capChoice != "Scissors") {
-                alert("\"" + capChoice + "\" is an invalid response: you need to choose \"Rock\", \"Paper\", or \"Scissors\"!");
-                return playerPlay();
-            } else {
-                return capChoice;
-            }
-        };
-        function game() {
-            let playerScore = 0;
-            let computerScore = 0;
-            alert("Let's play 5 rounds of rock, paper, scissors!");
-            let i;
-            for (i = 1; i < 6; i++) {
-                let playerChoice = playerPlay();
-                let computerChoice = computerPlay();
-                let result = "Round " + i + " outcome: \n" + playRound(playerChoice, computerChoice);
-                if (playerOutcome == "win") {
-                    playerScore += 1;
-                } else {
-                    computerScore += 1;
-                };
-                alert(result);
-            };
-            alert(evalGame(playerScore, computerScore));
-        };
-        game();
-    </script>
+    <body>
+        <div id='top-section'>
+            <h1>Rock, Paper, Scissors</h1>
+            <p>Welcome to a simple game of "Rock, Paper, Scissors!"</p>
+            <p>To play, simply click on one of the possible "plays" below.</p>
+            <p>The first person to score 5 points is the winner!</p>
+        </div>
+        <div id='score-section'>
+            <div class='scores' id='your-score-section'>
+                <p>Your Score:</p>
+                <p id="player-score">0</p>
+            </div>
+            <div id='score-section-space'></div>
+            <div class='scores' id='computer-score-section'>
+                <p>Computer's Score:</p>
+                <p id="computer-score">0</p>
+            </div>
+        </div>
+        <div id='plays-section'>
+            <img class='play-image' id='rock' src='images/rock.png'>
+            <img class='play-image' id='paper' src='images/paper.png'>
+            <img class='play-image' id='scissors' src='images/scissors.png'>
+        </div>
+    </body>
+    <script type='text/javascript' src='/scripts.js'></script>
 </html>

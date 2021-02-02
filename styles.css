@@ -1,0 +1,46 @@
+#top-section * {
+    text-align: center;
+}
+#score-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px;
+}
+#score-section-space {
+    min-width: 10vw;
+}
+.scores * {
+    display: block;
+}
+#player-score {
+    text-align: center;
+}
+#computer-score {
+    text-align: center;
+}
+#plays-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+}
+.play-image {
+    width: auto;
+    max-height: 80px;
+    margin: 0px 25px;
+}
+.play-image:hover {
+    background-image: radial-gradient(circle, rgba(100, 100, 221, 0.3), rgba(100, 100, 221, 0.15), white, white);
+}
+.play-image:active {
+    background-image: radial-gradient(circle, rgba(100, 100, 221, 0.5), rgba(100, 100, 221, 0.25), white, white);
+    max-height: 100px;
+}
+#rock {
+    max-height: 60px;
+    padding: 10px;
+}
+#rock:active {
+    max-height: 80px;
+}
