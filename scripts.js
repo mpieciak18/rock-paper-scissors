@@ -12,7 +12,6 @@ function buttonClick(event){
     let playerChoice = evalClick(clickedButton);
     let computerChoice = computerPlay();
     let playerOutcome = evalRound(playerChoice, computerChoice);
-    console.log(playerOutcome);
     // let roundOutcome = displayRoundOutcome(playerChoice, computerChoice, playerOutcome);
     incrementScore(playerOutcome);
     if (playerScore == 5 || computerScore == 5) {
@@ -35,17 +34,36 @@ function computerPlay() {
         return "Scissors";
     }
 };
+
+let playerScoreSection = document.getElementById('player-score-section');
+let computerScoreSection = document.getElementById('computer-score-section');
+let wholeScoreSection = document.getElementById('score-section');
+
+let whiteGrad = 'rgba(0, 0, 0, 0)';
+let greenGrad = 'radial-gradient(circle, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0.25), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))';
+let redGrad = 'radial-gradient(circle, rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.25), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))';
+let yellowGrad = 'radial-gradient(circle, rgba(255, 255, 0, 0.5), rgba(255, 255, 0, 0.125), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))';
+
 function evalRound(playerChoice, computerChoice) {
     if (playerChoice == "Rock" && computerChoice == "Paper"
         || playerChoice == "Paper" && computerChoice == "Scissors"
         || playerChoice == "Scissors" && computerChoice == "Rock") {
             playerOutcome = "lose";
+            computerScoreSection.setAttribute('style', 'background-image: ' + redGrad); 
+            playerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
+            wholeScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
     } else if (playerChoice == "Paper" && computerChoice == "Rock"
         || playerChoice == "Scissors" && computerChoice == "Paper"
         || playerChoice == "Rock" && computerChoice == "Scissors") {
             playerOutcome = "win";
+            playerScoreSection.setAttribute('style', 'background-image: ' + greenGrad);
+            computerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
+            wholeScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
     } else {
         playerOutcome = "tie";
+        playerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
+        computerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
+        wholeScoreSection.setAttribute('style', 'background-image: ' + yellowGrad);
     };
     return playerOutcome;
 };
@@ -79,6 +97,9 @@ function promptNewGame() {
         document.getElementById('player-score').textContent = '0';
         computerScore = 0;
         document.getElementById('computer-score').textContent = '0';
+        playerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
+        computerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
+        wholeScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
     } else {
         return;
     }
