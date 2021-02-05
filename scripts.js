@@ -71,11 +71,11 @@ function evalRound(playerChoice, computerChoice) {
 };
 function createOutcomeText(playerChoice, computerChoice, playerOutcome) {
     if (playerOutcome === "win") {
-        return "You won that round! " + playerChoice + " beats " + computerChoice + "!";
+        return "Round Won: " + playerChoice + " Beats " + computerChoice;
     } else if (playerOutcome === "lose") {
-        return "You lost that round. " + computerChoice + " beats " + playerChoice + "!";
+        return "Round Lost: " + computerChoice + " Beats " + playerChoice;
     } else if (playerOutcome === "tie") {
-        return "You tied. Both of you played " + playerChoice + "!";
+        return "Round Tied: Both Played " + playerChoice;
     } else {
         return null;
     }
