@@ -12,7 +12,8 @@ function buttonClick(event){
     let playerChoice = evalClick(clickedButton);
     let computerChoice = computerPlay();
     let playerOutcome = evalRound(playerChoice, computerChoice);
-    // let roundOutcome = displayRoundOutcome(playerChoice, computerChoice, playerOutcome);
+    let roundOutcome = createOutcomeText(playerChoice, computerChoice, playerOutcome);
+    displayRoundOutcome(roundOutcome);
     incrementScore(playerOutcome);
     if (playerScore == 5 || computerScore == 5) {
         promptNewGame();
@@ -20,6 +21,7 @@ function buttonClick(event){
         return;
     };
 };
+
 function evalClick(clickedButton) {
     let playerChoice = clickedButton.getAttribute('id')
     return playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
@@ -67,17 +69,23 @@ function evalRound(playerChoice, computerChoice) {
     };
     return playerOutcome;
 };
-// function displayRoundOutcome(playerChoice, computerChoice, playerOutcome) {
-//     if (playerOutcome === "win") {
-//         return "You win! " + playerChoice + " beats " + computerChoice + "!";
-//     } else if (playerOutcome === "lose") {
-//         return "You lose! " + computerChoice + " beats " + playerChoice + "!";
-//     } else if (playerOutcome === "tie") {
-//         return "You tied! Both of you played " + playerChoice + "!";
-//     } else {
-//         return null;
-//     }
-// };
+function createOutcomeText(playerChoice, computerChoice, playerOutcome) {
+    if (playerOutcome === "win") {
+        return "You won that round! " + playerChoice + " beats " + computerChoice + "!";
+    } else if (playerOutcome === "lose") {
+        return "You lost that round. " + computerChoice + " beats " + playerChoice + "!";
+    } else if (playerOutcome === "tie") {
+        return "You tied. Both of you played " + playerChoice + "!";
+    } else {
+        return null;
+    }
+};
+
+let roundOutcomeText = document.getElementById('round-outcome-text');
+
+function displayRoundOutcome(roundOutcome) {
+    roundOutcomeText.textContent = roundOutcome;
+};
 function incrementScore(playerOutcome) {
     if (playerOutcome == 'win') {
         playerScore += 1;
@@ -100,6 +108,7 @@ function promptNewGame() {
         playerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
         computerScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
         wholeScoreSection.setAttribute('style', 'background-image: ' + whiteGrad);
+        roundOutcomeText.textContent = '';
     } else {
         return;
     }

@@ -1,15 +1,18 @@
 #top-section * {
     text-align: center;
 }
+#round-outcome-text {
+    height: 10vh;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #score-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 25px;
 }
-/* #score-section-space {
-    min-width: 10vw;
-} */
 .scores * {
     display: block;
 }
