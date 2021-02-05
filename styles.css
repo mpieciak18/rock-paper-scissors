@@ -1,12 +1,24 @@
+p, h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 #top-section * {
     text-align: center;
 }
 #round-outcome-text {
-    height: 10vh;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/* @media (max-width: 600px) {
+    #round-outcome-text {
+        height: 30px;
+    }
+} */
+@media (min-width: 601px) {
+    #round-outcome-text {
+        height: 10vh;
+    }
 }
 #score-section {
     display: flex;
@@ -15,11 +27,6 @@
 }
 .scores * {
     display: block;
-}
-#player-score {
-    text-align: center;
-}
-#computer-score {
     text-align: center;
 }
 #player-score-section {
